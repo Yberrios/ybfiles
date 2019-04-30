@@ -1,0 +1,212 @@
+<html>
+<head>
+ <meta charset="utf-8" />
+ <link href="budgetlayout.css" rel="stylesheet"/>
+ <script type="text/javascript" >
+      
+//Program name: Yadira Berrios
+//Purpose: Tool to help buyer monitor spend vs budget for a project
+//Author: Yadira Berrios
+//Date last modified: April 28, 2019
+
+    
+    var indTotal;
+    var spend;
+    var USTotal;
+    var projectName;
+    var goal;
+    var equipSpend;
+    var actualSpend;
+   
+
+//Functions
+     
+    function calBud(){
+        
+
+        var projectSell=Number(document.getElementById("projectSell").value);
+        var margin=.60;
+        var budget = projectSell * margin;
+ 
+        document.getElementById("budget").value=budget;
+  
+        return budget;
+       
+    }
+     
+    function usHours(){
+        
+        var numUSHours=Number(document.getElementById("numUSHours").value);
+        var USRate=50;
+        var USTotal=USRate*numUSHours;
+        document.getElementById("USTotal").value=USTotal;
+        return USTotal;
+    }
+    
+     function indHours(){
+        
+        var numIndHours=Number(document.getElementById("numIndHours").value);
+        var indRate=20;
+        var indTotal=indRate*numIndHours;
+        document.getElementById("indTotal").value=indTotal;
+        return indTotal;
+     
+    }
+             
+     function total(){
+      
+      var equipSpend=Number(document.getElementById("equipSpend").value);
+    var total = usHours() + indHours() + equipSpend;
+         
+         document.getElementById("tot").value=total;
+         
+         return total;
+     }
+
+     
+   //Tool header
+    
+    document.write("Project budget tool." +"<p />");
+            
+        </script> 
+        </head>
+    <body>
+    </body>
+ 
+<!--Project form-->
+    
+    
+<form name = "BudgetForm" action="">
+
+<fieldset>
+    <label class="field" for="projectName">ProjectName:</label>
+     <select required>
+    <option selected disabled>Select project</option>
+     <option>Project 1</option>
+      <option>Project 2</option>
+      <option>Project 3</option>
+     </select><p />
+     
+          <label class="field" for="projectSell">Project sell price:</label>
+          <input type="number" name="projectSell" id="projectSell" value= "0" onChange="calBud();" >
+     
+
+     
+          <label class="field" for="budget">Project Budget:</label>
+          <input type="number" name="budget" id="budget" readonly
+                > 
+    
+     
+          <label class="field" for="numUSHours">Number of hours project executed in U.S. :</label>
+          <input type="number" name="numUSHours" id="numUSHours" onchange="usHours();"
+                 > 
+    
+     
+          <label class="field" for="numIndiaHours">Number of hours project executed in India:</label>
+          <input type="number" name="numIndiaHours" value="0" id="numIndHours" onchange="indHours();">
+    
+     
+     
+          <label class="field" for="USTotal">Total cost of US execution:</label>  
+          <input type="number" name="USTotal"value="0" id="USTotal" onchange="total();"
+                 readonly >
+    
+     
+          <label class="field" for="IndiaTotal">Total cost of India execution:</label>
+          <input type="number" name="IndiaTotal"value="0" id="indTotal"onchange="total();"
+                 readonly> 
+    
+        
+        <label class="field" for="equipSpend">Equip spend for project:</label>
+        <input type="number" name="equipSpend" id="tot" onchange="total();">
+    
+        
+         <label class="field" for="actualSpend">Actual spend for project:</label>
+        <input type="number" name="actualSpend"   id="tot"   readonly><p />
+     
+     <input type="reset" value="Reset Form">
+    
+    </fieldset>
+     </form>
+     
+   @charset "utf-8";
+   
+   /*Body style */
+        
+html{
+    background-color: aliceblue;}
+
+form {
+    
+    
+
+	radial-gradient(circle closest-corner at 40% 70%,white 15%,rgba(151,151,151,0.5)50%),
+	radial-gradient(circle closest-corner at 80% 40%,white 15%,rgba(0,0,0,0)30%),
+	radial-gradient(closest-side at 10% 20%,white 20%,rgba(0,0,0,0)45%),
+	radial-gradient(5% 5% at 90% 10%, white 15%,rgba(0,0,0,0)40%);
+	
+
+
+	box-shadow: rgb(31,31,31)30px 0px 45px,
+            rgb(31,31,31)-30px 0px 45px;
+       
+  padding: 1em;
+
+  border: 1px solid #c1c1c1;
+  margin-top: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+    max-height:auto;
+}
+form input {
+  margin-bottom: 1rem;
+ 
+  border:.05px
+      solid #9c9c9c;
+}
+form button {
+  background: lightgrey;
+  padding: 0.7em;
+  border: 0;
+}
+
+label,p
+{
+  text-align: left;
+ 
+  
+}
+
+input {
+  width: 20%;
+  padding: 0.7em;
+  margin-bottom: 0.5rem;
+}
+input:focus {
+  outline: 3px solid gold;
+}
+
+@media (min-width: 400px) {
+  form {
+    overflow: hidden;
+  }
+
+  label {
+    float: left;
+    width: 200px;
+  }
+
+  input {
+    float: left;
+    width: calc( 90% - 200px);
+  }
+
+  button {
+    float: center;
+    width: calc(50% - 200px);
+  }
+}
+input.textbox    {
+    width: 300px;}
